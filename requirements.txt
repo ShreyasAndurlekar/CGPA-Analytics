@@ -2,5 +2,6 @@ Flask
 numpy
 pandas
 gunicorn
+openpyxl
 
 
