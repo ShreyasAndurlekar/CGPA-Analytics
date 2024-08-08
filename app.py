@@ -28,7 +28,7 @@ def submit():
         for idx, (name, batch) in enumerate(zip(students_moved['Name'], students_moved['Batch']), start=1)
         ]
 
-        return render_template('index.html', old=old, new=new, student_list=student_list)
+        return render_template('find.html', old=old, new=new, student_list=student_list)
 
 @app.route('/get-cgpa', methods=['POST'])
 def handle_cgpa_request():
