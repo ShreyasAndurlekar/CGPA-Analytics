@@ -40,3 +40,19 @@ def get_cgpa(name):
         return "Error: The file 'sem4.xlsx' was not found in the 'data' folder."
     except Exception as e:
           return f"An error occurred: {str(e)}\nAvailable columns: {df.columns.tolist()}"
+
+def gender_cgpa():
+
+    df = pd.read_excel('data/sem4.xlsx', sheet_name=0)
+    average_cgpa_by_gender = df.groupby('Gender')['C.G.P.A'].mean().reset_index()
+    overall_mean_cgpa = df['C.G.P.A'].mean()
+    print(average_cgpa_by_gender)
+    print(overall_mean_cgpa)
+    students_above_8_cgpa = df[df['C.G.P.A'] > 8]
+    count_above_8_cgpa = students_above_8_cgpa.shape[0]
+    print(count_above_8_cgpa)
+
+gender_cgpa()
+
+
+

@@ -33,3 +33,11 @@
     font-size:x-large;
     margin-top: 30px;
 }
+
+
+@media (max-width: 480px) {
+    body {
+        font-size: x-large; /* Adjust this value as needed */
+        
+    }
+}
