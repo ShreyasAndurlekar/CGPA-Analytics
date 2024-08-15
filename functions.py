@@ -52,7 +52,55 @@ def gender_cgpa():
     count_above_8_cgpa = students_above_8_cgpa.shape[0]
     print(count_above_8_cgpa)
 
-gender_cgpa()
+def hardest():
+
+    
+    df1 = pd.read_excel('data/sem3.xlsx')  
+    df2 = pd.read_excel('data/sem4.xlsx')  
+
+
+    courses1 = ['EM-III', 'BELD', 'DBMS', 'DS', 'COA']
+    courses2 = ['DM', 'TCS', 'OS', 'CN', 'DAA']
+
+    grade_mapping = {'O': 7, 'A': 6, 'B': 5, 'C': 4, 'D': 3, 'E': 2, 'P': 1, 'Fail': 0, 'xxx': 0}
+
+    for course in courses1:
+        df1[course] = df1[course].map(grade_mapping)
+
+    lowest_grade_course1 = df1[courses1].mean().idxmin()
+    print(f"The course with the lowest grades in semester 3 is: {lowest_grade_course1}")
+
+
+    for course in courses2:
+        df2[course] = df2[course].map(grade_mapping)
+
+    lowest_grade_course2 = df2[courses2].mean().idxmin()
+    print(f"The course with the lowest grades in semester 4 is: {lowest_grade_course2}")
+
+def barack():
+
+    df_sem3 = pd.read_excel('data/sem3.xlsx')  
+    df_sem4 = pd.read_excel('data/sem4.xlsx')  
+
+    df_sem3['C.G.P.A'] = pd.to_numeric(df_sem3['C.G.P.A'], errors='coerce')
+    df_sem4['C.G.P.A'] = pd.to_numeric(df_sem4['C.G.P.A'], errors='coerce')
+
+    merged_df = pd.merge(df_sem3[[ 'Name', 'C.G.P.A']], 
+                        df_sem4[[ 'Name', 'C.G.P.A']], 
+                        on='Name', suffixes=('_sem3', '_sem4'))
+
+    merged_df['CGPA_Increase'] = merged_df['C.G.P.A_sem4'] - merged_df['C.G.P.A_sem3']
+
+    top_5_increases = merged_df.sort_values(by='CGPA_Increase', ascending=False).head(10)
+
+    print(top_5_increases[['Name', 'C.G.P.A_sem3', 'C.G.P.A_sem4', 'CGPA_Increase']])
+
+
+
+barack()
+
+
+
 
 
 

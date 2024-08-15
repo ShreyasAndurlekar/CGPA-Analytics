@@ -1,3 +1,8 @@
+body{
+
+    font-size:large;
+}
+
 
 .grid-container {
     display: grid;
@@ -18,6 +23,16 @@
     .grid-container {
         grid-template-columns: 1fr; 
     }
+
+    body{
+
+        font-size: x-large;
+    }
+
+    .g{
+
+        margin-left: 40px;
+    }
 }
 
 .navbar{
@@ -34,10 +49,17 @@
     margin-top: 30px;
 }
 
+.g1{
 
-@media (max-width: 480px) {
-    body {
-        font-size: x-large; /* Adjust this value as needed */
-        
-    }
+    margin-right: 10px;
+
 }
+
+td:first-child {
+    padding-right: 20px; /* Add padding between the first and second column */
+}
+
+th:first-child {
+    text-align: left; /* Add padding between the first and second column */
+}
+
