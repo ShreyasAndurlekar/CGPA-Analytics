@@ -12,6 +12,10 @@ def home():
 def find():
     return render_template('find.html')
 
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':

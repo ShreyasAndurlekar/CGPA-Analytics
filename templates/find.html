@@ -5,6 +5,15 @@
     <link rel = "stylesheet" href = "../static/styles1.css">
 </head>
 <body style = "background-color:#F0E0D6;">
+    <div class = "navbar">
+        <h1> Big Data Analytics..</h1>
+        <div class = "g">
+            <a class = "g1" href = "{{ url_for('home') }}" >Home</a>
+            <a class = "g1" href = "{{ url_for('map') }}" >Map</a>
+            <a class = "g1" href = "{{ url_for('map') }}" >Tribute</a>
+        </div>
+        
+    </div>
 
     <h1 style = "text-align: center; margin: 80px;">Find out who knew each other already!</h1>
 
@@ -20,7 +29,7 @@
 
     <div id = "result" style = "text-align: center;"> 
 
-        <h2>Students who were in old {{ old }} division and have moved to the new {{ new }} division:</h2>
+        <h2>Students who were in first year {{ old }} division and have moved to the new SY {{ new }} division:</h2>
         
         <ul style="list-style-type: none; padding: 0;">
             {% for student in student_list %}

@@ -27,3 +27,17 @@ form label, form input {
     margin-left: 30%;
 
 }
+
+.navbar{
+
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.g{
+
+    margin-right: 50px;
+    font-size:x-large;
+    margin-top: 30px;
+}

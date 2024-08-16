@@ -1,0 +1,85 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Zoom on Scroll</title>
+    <link rel = "stylesheet" href = "../static/styles2.css">
+    <style>
+        body {
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            width: 1703px;
+            height: 829px;
+            overflow: hidden;
+            position: relative;
+        }
+        #zoomable-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.1s ease-out;
+        }
+        .c{
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body style = "background-color:#F0E0D6;">
+    <div class = "navbar">
+        <h1> Big Data Analytics..</h1>
+        <div class = "g">
+            <a class = "g1" href = "{{ url_for('home') }}" >Home</a>
+            <a class = "g1" href = "{{ url_for('find') }}" >Gangs</a>
+            <a class = "g1" href = "{{ url_for('find') }}" >Tribute</a>
+        </div>
+    </div>
+    <div class = "c">
+        <div class="image-container">
+            <img id="zoomable-image" src="{{ url_for('static', filename='RAIT.jpg') }}" alt="Zoomable Image">
+        </div>
+    </div>
+    <script>
+        const image = document.getElementById('zoomable-image');
+        const container = document.querySelector('.image-container');
+        let scale = 1;
+        let isZoomed = false;
+
+        container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY * -0.01;
+            scale = Math.min(Math.max(1, scale + delta), 5);
+            updateImageTransform(e);
+        });
+
+        container.addEventListener('mousemove', (e) => {
+            if (scale > 1) {
+                updateImageTransform(e);
+            }
+        });
+
+        function updateImageTransform(e) {
+            const rect = container.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+
+            image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+            image.style.transform = `scale(${scale})`;
+
+            isZoomed = scale > 1;
+            container.style.cursor = isZoomed ? 'move' : 'default';
+        }
+    </script>
+</body>
+</html>
+
