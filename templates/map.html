@@ -10,17 +10,9 @@
             margin: 0;
             background-color: #f0f0f0;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
         .image-container {
             max-width: 100%;  /* Ensures the container doesn’t exceed the screen width */
-            max-height: 80vh;  /* Limits the height to 80% of the viewport height */
+            max-height: 100vh;  /* Ensures the container doesn’t exceed the viewport height */
             overflow: hidden;
             position: relative;
         }
@@ -33,10 +25,17 @@
             transition: transform 0.1s ease-out;
         }
 
+        .c {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
         .round-button {
             width: 20px;
             height: 20px;
-            background-color: rgb(92, 156, 190);
+            background-color:rgb(92, 156, 190);
             border-radius: 50%;
             border: none;
             cursor: pointer;
@@ -88,7 +87,6 @@
             font-size: medium;
             font-family: Verdana, sans-serif;
         }
-
     </style>
 </head>
 <body style="background-color:#F0E0D6;">
@@ -100,15 +98,30 @@
             <a class="g1" href="{{ url_for('find') }}">Tribute</a>
         </div>
     </div>
-    <div class="container">
+    <div class="c">
         <div class="image-container">
             <img id="zoomable-image" src="{{ url_for('static', filename='RAIT.jpg') }}" alt="Zoomable Image">
             <!-- Position the buttons using absolute positioning -->
             <button class="round-button" data-image="{{ url_for('static', filename='photos/solar.jpg') }}" data-title="Terrace" style="top: 68%; left: 14.5%;"></button>
-            <!-- Other buttons here -->
-        </div>
-        <div style = "margin: 20px; margin-right: auto">
-            Add lore related to map in next commit...
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/rainsgalore.jpg') }}" data-title="Peaceful Rains" style="top: 25%; left: 36%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/udaan.jpg') }}" data-title="Early Dawn of Udaan 2024" style="bottom: 30%; right: 1%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/tiredcat.jpg') }}" data-title="Too Many Writups..." style="bottom: 40%; right: 63%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/topview.jpg') }}" data-title="The Summer of 2023" style="bottom:70%; left: 10%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/terrace.jpg') }}" data-title="Navi Mumbai Heights" style="bottom:66%; left: 1%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/resort.jpg') }}" data-title="MBA Pool" style="bottom:56%; left: 6%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/avgday.jpg') }}" data-title="Just Casually Playing Mobile Games in Class" style="bottom:32%; left: 53%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/cat1.jpg') }}" data-title="A Peaceful Night in Nerul" style="bottom:78%; right: 1%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/lab.jpg') }}" data-title="While The World Drowns Away" style="top: 72%; left: 13%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/612a.jpg') }}" data-title="Time To Go Home" style="top: 60%; left: 14.5%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/walkpath.jpg') }}" data-title="Rains #1" style="bottom:96%; left: 6%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/walkpath2.jpg') }}" data-title="Rains #2" style="bottom:96%; left: 4%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/lightrain.jpg') }}" data-title="Rains #3" style="bottom:93%; left: 1%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/lr2.jpg') }}" data-title="Mud" style="bottom:94%; left: 2%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/rat.jpg') }}" data-title="Javed the Juinagar Rat" style="bottom:96%; left: 8%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/disturbing.jpg') }}" data-title="Unsettling Image" style="bottom:90%; left: 0%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/potato.jpg') }}" data-title="Sad Little Piece of Potato" style="bottom:32%; left: 56%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/tired.jpg') }}" data-title="Nap Time" style="bottom:40%; left: 56%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/horizon.jpg') }}" data-title="Dusk of Horizon 2024" style="bottom:78%; right: 20%;"></button>
         </div>
     </div>
 
@@ -118,6 +131,9 @@
             <img id="modal-image" src="" alt="Modal Image">
             <button class="close-btn" id="close-btn">Close</button>
         </div>
+    </div>
+    <div style = "margin: 20px; margin-right: auto">
+        Add lore related to map in next commit...
     </div>
 
     <script>
@@ -163,14 +179,14 @@
 
         // Show modal on button click
         document.querySelectorAll('.round-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const imageSrc = button.getAttribute('data-image');
-                const imageTitle = button.getAttribute('data-title');
-                modalImage.src = imageSrc;  // Use the value from data-image directly
-                modalTitle.textContent = imageTitle;
-                modal.style.display = 'flex';
-            });
+        button.addEventListener('click', () => {
+            const imageSrc = button.getAttribute('data-image');
+            const imageTitle = button.getAttribute('data-title');
+            modalImage.src = imageSrc;  // Use the value from data-image directly
+            modalTitle.textContent = imageTitle;
+            modal.style.display = 'flex';
         });
+    });
 
         // Close modal
         closeBtn.addEventListener('click', () => {
