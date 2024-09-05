@@ -1,6 +1,7 @@
 body{
 
     font-size: large;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #container{
@@ -40,4 +41,12 @@ form label, form input {
     margin-right: 50px;
     font-size:x-large;
     margin-top: 30px;
+}
+
+@media (max-width: 500px) {
+
+    .g{
+
+        margin-right: -10px;
+    }
 }

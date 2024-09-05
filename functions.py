@@ -61,7 +61,7 @@ def get_cgpa(name):
         else:
             percentage_increase = "N/A (student not found in sem3.xlsx)"
 
-        return (f"The CGPA of {full_name} is {cgpa_sem4}. \nPercentage increase: {percentage_increase} ")
+        return (f"The CGPA of {full_name} is {cgpa_sem4}. \nRate of change: {percentage_increase} ")
              
     
     except FileNotFoundError as e:

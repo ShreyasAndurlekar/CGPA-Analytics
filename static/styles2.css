@@ -1,6 +1,7 @@
 body{
 
     font-size:large;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -50,7 +51,7 @@ th:first-child {
 
     .g{
 
-        margin-right: 0px;
+        margin-right: -10px;
     }
 
     .grid-container {
@@ -59,7 +60,7 @@ th:first-child {
 
     }
 
-    
+
 
 }
 
