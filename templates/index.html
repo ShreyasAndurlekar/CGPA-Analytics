@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ancestry.com</title>
     <link rel = "stylesheet" href = "../static/styles2.css">
+</head>
     <body style = "background-color:#F0E0D6;">
         <div class = "navbar">
             <h1> Big Data Analytics..</h1>
@@ -16,7 +18,7 @@
 
         <div class="grid-container">
             <div class="box">
-                <h2>Get CGPA</h2>
+                <h2>Get CGPA Analysis</h2>
                 <div id = "container">
 
                     <form action="/get-cgpa" method="POST">
@@ -27,6 +29,7 @@
                 {% if result %}
                     <div id="result">
                         <p>{{ result }}<p>
+                            
                     </div>
                     {% endif %}
                     {% if error %}
@@ -44,15 +47,65 @@
                 <p>Girls have an avg CGPA of 7.87 and boys at 7.17!</p>
                 <p>Regardless of gender the average CGPA is 7.34 and a 1/3rd of people have above 8</p>
             </div>
-            
+
             <div class="box">
-                <h2>THE TOUGHEST SUBJECTS</h2>
-                <p>The toughest subject with a deadly average rate of D is Basic Electronics and Logic Design from SEM III</p>
-                <p>Reason: Massive deviation from sample papers + In one of the 10 mark questions ESE, students were asked to design a MOD 5 counter which takes a lot of time... a MOD counter question is usually expected to be of max 3</p>
-                <p>Surprisingly, the subject Data Analysis and Algorithms in SEM IV which is known for being easy was the deadliest subject</p>
-                <p>This was due to the absence of numericals and a demonstration being asked for every algorithm meaning you had to make your own data, solve it, and also provide theory for it in ESE</p>
+                <h2>2024 Leaderboard</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>CGPA</th>
+                    </tr>
+                    <tr>
+                        <td>NIHARIKA RAHUL KAMAT</td>
+                        <td>9.99</td>
+                    </tr>
+                    <tr>
+                        <td>TALELE ROHIT RAHUL</td>
+                        <td>9.96</td>
+                    </tr>
+                    <tr>
+                        <td>KORGAONKAR NEERAV JAIDEEP</td>
+                        <td>9.92</td>
+                    </tr>
+                    <tr>
+                        <td>SUNIDHISHREE PRABAKARAN</td>
+                        <td>9.89</td>
+                    </tr>
+                    <tr>
+                        <td>ADITYA ANIL BHABAL</td>
+                        <td>9.88</td>
+                    </tr>
+                    <tr>
+                        <td>SUPRITHA YOGESH ANCHAN</td>
+                        <td>9.78</td>
+                    </tr>
+                    <tr>
+                        <td>DHANDARPHALE SHARDUL SHRIPAD</td>
+                        <td>9.76</td>
+                    </tr>
+                    <tr>
+                        <td>ANKIT CHAUDHARY</td>
+                        <td>9.86</td>
+                    </tr>
+                    <tr>
+                        <td>CHAKRABORTY SAIKAT TARUN</td>
+                        <td>9.88</td>
+                    </tr>
+                    <tr>
+                        <td>BHAMRE ARYA PRAVIN</td>
+                        <td>9.87</td>
+                    </tr>
+                    <tr>
+                        <td>YAHYA MOOSA</td>
+                        <td>9.79</td>
+                    </tr>
+                    <tr>
+                        <td>KHATAVKAR SHREYAS JAYAVANT</td>
+                        <td>9.72</td>
+                    </tr>
+                </table>
             </div>
-            
+
             <div class="box">
                 <h2>From It's Joever to We are so Barack!!!</h2>
                 <table>
@@ -116,11 +169,27 @@
                         <td>7.98</td>
                         <td>0.55</td>
                     </tr>
+                    <tr>
+                        <td>MURDANDE ARNAV</td>
+                        <td>6.69</td>
+                        <td>7.23</td>
+                        <td>0.54</td>
+                    </tr>
+                    <tr>
+                        <td>ASHUTOSH YOGESH KULKARNI</td>
+                        <td>6.72</td>
+                        <td>7.24</td>
+                        <td>0.52</td>
+                    </tr>
                 </table>
             </div>
             
             <div class="box">
-
+                <h2>THE TOUGHEST SUBJECTS</h2>
+                <p>The toughest subject with a deadly average rate of D is Basic Electronics and Logic Design from SEM III</p>
+                <p>Reason: Massive deviation from sample papers + In one of the 10 mark questions ESE, students were asked to design a MOD 5 counter which takes a lot of time... a MOD counter question is usually expected to be of max 3</p>
+                <p>Surprisingly, the subject Data Analysis and Algorithms in SEM IV which is known for being easy was the deadliest subject</p>
+                <p>This was due to the absence of numericals and a demonstration being asked for every algorithm meaning you had to make your own data, solve it, and also provide theory for it in ESE</p>
             </div>
             
             <div class="box">
@@ -132,6 +201,7 @@
         <div>THIS INFORMATION WAS PUBLICLY AVAILABLE NOT A VIOLATION OF PRIVACY</div>
     
     </body>
+</html>
 
     <!--
     gender

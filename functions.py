@@ -15,31 +15,59 @@ def find_students_moved(old_data, new_data, old_division, new_division):
 
 def get_cgpa(name):
     try:
-       
-        df = pd.read_excel('data/sem4.xlsx', sheet_name=0)
+        # Load data from both semesters
+        df_sem3 = pd.read_excel('data/sem3.xlsx', sheet_name=0)
+        df_sem4 = pd.read_excel('data/sem4.xlsx', sheet_name=0)
+        
+        # Ensure columns are properly named in both dataframes
+        if 'Name' not in df_sem3.columns or 'C.G.P.A' not in df_sem3.columns:
+            raise Exception("sem3.xlsx must contain 'Name' and 'C.G.P.A' columns")
+        if 'Name' not in df_sem4.columns or 'C.G.P.A' not in df_sem4.columns:
+            raise Exception("sem4.xlsx must contain 'Name' and 'C.G.P.A' columns")
         
         # Convert all names to lowercase and split into sets of words
-        df['Name_Set'] = df['Name'].str.lower().apply(lambda x: set(x.split()))
-        
+        df_sem4['Name_Set'] = df_sem4['Name'].str.lower().apply(lambda x: set(x.split()))
+        df_sem3['Name_Set'] = df_sem3['Name'].str.lower().apply(lambda x: set(x.split()))
+
         # Convert input name to lowercase and split into a set of words
         name_set = set(name.lower().split())
-        
+
         # Find the row where all words in the input name are present
-        result = df[df['Name_Set'].apply(lambda x: name_set.issubset(x))]
+        result_sem4 = df_sem4[df_sem4['Name_Set'].apply(lambda x: name_set.issubset(x))]
+        result_sem3 = df_sem3[df_sem3['Name_Set'].apply(lambda x: name_set.issubset(x))]
         
-        if result.empty:
-            return f"No student found with the name: {name}"
-        elif len(result) > 1:
-            return f"Multiple matches found for: {name}. Please provide a more specific name."
+        if result_sem4.empty:
+            return f"No student found with the name: {name} in sem4.xlsx"
+        elif len(result_sem4) > 1:
+            return f"Multiple matches found for: {name} in sem4.xlsx. Please provide a more specific name."
+
+        if result_sem3.empty:
+            return f"No student found with the name: {name} in sem3.xlsx"
+        
+        # Extract names and CGPA values
+        full_name = result_sem4['Name'].values[0]
+        cgpa_sem4 = result_sem4['C.G.P.A'].values[0]
+        
+        # Check if the student also exists in sem3.xlsx
+        matching_sem3 = result_sem3[result_sem3['Name'] == full_name]
+        
+        if not matching_sem3.empty:
+            cgpa_sem3 = matching_sem3['C.G.P.A'].values[0]
+            if cgpa_sem3 == 0:
+                percentage_increase = "N/A (previous CGPA was 0)"
+            else:
+                percentage_increase = ((cgpa_sem4 - cgpa_sem3) / cgpa_sem3) * 100
+                percentage_increase = f"{percentage_increase:.2f}%"
         else:
-            full_name = result['Name'].values[0]
-            cgpa = result['C.G.P.A'].values[0]
-            return f"The CGPA of {full_name} is {cgpa}"
+            percentage_increase = "N/A (student not found in sem3.xlsx)"
+
+        return (f"The CGPA of {full_name} is {cgpa_sem4}. \nPercentage increase: {percentage_increase} ")
+             
     
-    except FileNotFoundError:
-        return "Error: The file 'sem4.xlsx' was not found in the 'data' folder."
+    except FileNotFoundError as e:
+        return f"Error: {str(e)}"
     except Exception as e:
-          return f"An error occurred: {str(e)}\nAvailable columns: {df.columns.tolist()}"
+        return f"An error occurred: {str(e)}\nAvailable columns in sem3.xlsx: {df_sem3.columns.tolist()}\nAvailable columns in sem4.xlsx: {df_sem4.columns.tolist()}"
 
 def gender_cgpa():
 
@@ -91,9 +119,24 @@ def barack():
 
     merged_df['CGPA_Increase'] = merged_df['C.G.P.A_sem4'] - merged_df['C.G.P.A_sem3']
 
-    top_5_increases = merged_df.sort_values(by='CGPA_Increase', ascending=False).head(10)
+    top_5_increases = merged_df.sort_values(by='CGPA_Increase', ascending=False).head(15)
 
     print(top_5_increases[['Name', 'C.G.P.A_sem3', 'C.G.P.A_sem4', 'CGPA_Increase']])
+
+def highest():
+
+    file_path = 'data/sem4.xlsx'
+    df = pd.read_excel(file_path)
+
+    # Calculate the average of SGPA and CGPA
+    df['Average'] = (df['S.G.P.A'] + df['C.G.P.A']) / 2
+
+    # Find the top 10 students with the highest average
+    top_10_students = df.nlargest(12, 'Average')
+
+    # Display the result
+    print(top_10_students[['Name', 'S.G.P.A', 'C.G.P.A', 'Average']])
+
 
 
 

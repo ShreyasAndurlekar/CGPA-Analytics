@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ancestry.com</title>
     <link rel = "stylesheet" href = "../static/styles1.css">
 </head>
@@ -15,21 +16,21 @@
         
     </div>
 
-    <h1 style = "text-align: center; margin: 80px;">Find out who knew each other already!</h1>
+    <h1 style = "text-align: center; margin: 80px;">Find out who knew each other since FY</h1>
 
         <div id = "container">
 
             <form action="/submit" method="POST">
                 <label for="new">Current Div: </label>
                 <input type="text" id="new" name="new">
-                <label for="old">Previous Div: </label>
+                <label for="old">FY Div: </label>
                 <input type="text" id="old" name="old">
                 <input type="submit" value="Submit" id = "btn">
         </div>
 
     <div id = "result" style = "text-align: center;"> 
 
-        <h2>Students who were in first year {{ old }} division and have moved to the new SY {{ new }} division:</h2>
+        <h2>Students who were in first year {{ old }} division and are now part of {{ new }} division:</h2>
         
         <ul style="list-style-type: none; padding: 0;">
             {% for student in student_list %}

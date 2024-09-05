@@ -18,23 +18,6 @@ body{
     box-sizing: border-box; 
 }
 
-
-@media (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: 1fr; 
-    }
-
-    body{
-
-        font-size: x-large;
-    }
-
-    .g{
-
-        margin-left: 40px;
-    }
-}
-
 .navbar{
 
     display: flex;
@@ -52,7 +35,7 @@ body{
 .g1{
 
     margin-right: 10px;
-
+   
 }
 
 td:first-child {
@@ -61,5 +44,22 @@ td:first-child {
 
 th:first-child {
     text-align: left; /* Add padding between the first and second column */
+}
+
+@media (max-width: 500px) {
+
+    .g{
+
+        margin-right: 0px;
+    }
+
+    .grid-container {
+
+        grid-template-columns: auto;
+
+    }
+
+    
+
 }
 
