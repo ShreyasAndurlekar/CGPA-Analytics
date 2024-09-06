@@ -51,7 +51,8 @@ th:first-child {
 
     .g{
 
-        margin-right: -10px;
+        margin-right: 0px;
+        margin-left: 50px;
     }
 
     .grid-container {
