@@ -1,5 +1,22 @@
 import pandas as pd
 
+file_path = 'data/sem4.xlsx'
+df = pd.read_excel(file_path)
+
+# Calculate the average of SGPA and CGPA (if needed)
+df['Average'] = (df['S.G.P.A'] + df['C.G.P.A']) / 2
+
+# Rank students based on CGPA (higher CGPA gets a better rank, i.e., smaller rank number)
+df['Rank'] = df['C.G.P.A'].rank(ascending=False, method='min')
+
+# Sort the DataFrame by CGPA in descending order
+df_sorted = df.sort_values(by='C.G.P.A', ascending=False)
+
+# Reorder columns to have Rank, Name, and C.G.P.A
+df_sorted = df_sorted[['Rank', 'Name', 'C.G.P.A']]
+
+
+
 def extract_division(batch):
     return batch[0]                    
 
@@ -48,6 +65,9 @@ def get_cgpa(name):
         full_name = result_sem4['Name'].values[0]
         cgpa_sem4 = result_sem4['C.G.P.A'].values[0]
         
+        # Find the rank from df_sorted
+        rank = int(df_sorted[df_sorted['Name'] == full_name]['Rank'].values[0])
+        
         # Check if the student also exists in sem3.xlsx
         matching_sem3 = result_sem3[result_sem3['Name'] == full_name]
         
@@ -60,14 +80,11 @@ def get_cgpa(name):
                 percentage_increase = f"{percentage_increase:.2f}%"
         else:
             percentage_increase = "N/A (student not found in sem3.xlsx)"
-
-        return (f"The CGPA of {full_name} is {cgpa_sem4}. \nRate of change: {percentage_increase} ")
-             
-    
-    except FileNotFoundError as e:
-        return f"Error: {str(e)}"
+        
+        # Return the result as an HTML-formatted string
+        return f"Name: {full_name}\nCGPA: {cgpa_sem4}\nRank: #{rank}\nRate of Change: {percentage_increase}"
     except Exception as e:
-        return f"An error occurred: {str(e)}\nAvailable columns in sem3.xlsx: {df_sem3.columns.tolist()}\nAvailable columns in sem4.xlsx: {df_sem4.columns.tolist()}"
+        return str(e)
 
 def gender_cgpa():
 
@@ -123,19 +140,8 @@ def barack():
 
     print(top_5_increases[['Name', 'C.G.P.A_sem3', 'C.G.P.A_sem4', 'CGPA_Increase']])
 
-def highest():
 
-    file_path = 'data/sem4.xlsx'
-    df = pd.read_excel(file_path)
 
-    # Calculate the average of SGPA and CGPA
-    df['Average'] = (df['S.G.P.A'] + df['C.G.P.A']) / 2
-
-    # Find the top 10 students with the highest average
-    top_10_students = df.nlargest(12, 'Average')
-
-    # Display the result
-    print(top_10_students[['Name', 'S.G.P.A', 'C.G.P.A', 'Average']])
 
 
 
