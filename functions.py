@@ -76,7 +76,7 @@ def get_cgpa(name):
             if cgpa_sem3 == 0:
                 percentage_increase = "N/A (previous CGPA was 0)"
             else:
-                percentage_increase = ((cgpa_sem4 - cgpa_sem3) / cgpa_sem3) * 100
+                percentage_increase = (cgpa_sem4 - cgpa_sem3)*10
                 percentage_increase = f"{percentage_increase:.2f}%"
         else:
             percentage_increase = "N/A (student not found in sem3.xlsx)"
