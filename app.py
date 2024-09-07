@@ -16,6 +16,10 @@ def find():
 def map():
     return render_template('map.html')
 
+@app.route('/tribute')
+def tribute():
+    return render_template('tribute.html')
+
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':

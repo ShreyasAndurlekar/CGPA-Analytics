@@ -1,5 +1,6 @@
 import pandas as pd
 
+pd.set_option('display.max_rows', None)
 file_path = 'data/sem4.xlsx'
 df = pd.read_excel(file_path)
 
@@ -8,14 +9,13 @@ df['Average'] = (df['S.G.P.A'] + df['C.G.P.A']) / 2
 
 # Rank students based on CGPA (higher CGPA gets a better rank, i.e., smaller rank number)
 df['Rank'] = df['C.G.P.A'].rank(ascending=False, method='min')
+df.loc[df['C.G.P.A'] == 0, 'Rank'] = 296
 
 # Sort the DataFrame by CGPA in descending order
 df_sorted = df.sort_values(by='C.G.P.A', ascending=False)
 
 # Reorder columns to have Rank, Name, and C.G.P.A
 df_sorted = df_sorted[['Rank', 'Name', 'C.G.P.A']]
-
-
 
 def extract_division(batch):
     return batch[0]                    
@@ -89,13 +89,27 @@ def get_cgpa(name):
 def gender_cgpa():
 
     df = pd.read_excel('data/sem4.xlsx', sheet_name=0)
-    average_cgpa_by_gender = df.groupby('Gender')['C.G.P.A'].mean().reset_index()
+    average_cgpa_by_gender = df.groupby('Gender')['C.G.P.A'].median().reset_index()
     overall_mean_cgpa = df['C.G.P.A'].mean()
     print(average_cgpa_by_gender)
     print(overall_mean_cgpa)
     students_above_8_cgpa = df[df['C.G.P.A'] > 8]
     count_above_8_cgpa = students_above_8_cgpa.shape[0]
     print(count_above_8_cgpa)
+
+    chunk_size = 60
+    num_chunks = (len(df) + chunk_size - 1) // chunk_size  # Calculate the number of chunks
+    
+    print("\nBoys to Girls Ratio for Every 60 Rows:")
+    for i in range(num_chunks):
+        chunk = df.iloc[i*chunk_size:(i+1)*chunk_size]
+        boys_count = (chunk['Gender'] == 'Male').sum()
+        girls_count = (chunk['Gender'] == 'Female').sum()
+        
+        # Format the ratio as "boys_count:girls_count"
+        ratio = f"{boys_count}:{girls_count}"
+        
+        print(f"Chunk {i + 1}: Boys to Girls Ratio = {ratio}")
 
 def hardest():
 
@@ -142,7 +156,7 @@ def barack():
 
 
 
-
+gender_cgpa()
 
 
 
