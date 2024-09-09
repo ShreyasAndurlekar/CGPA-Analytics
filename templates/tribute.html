@@ -4,22 +4,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ancestry.com</title>
     <link rel="icon" href="https://i.pinimg.com/originals/52/8e/b3/528eb326e79ca1fc8292910792d6f074.png" type="image/png">
-    <link rel = "stylesheet" href = "../static/styles2.css">
+    <link rel="stylesheet" href="../static/styles2.css">
+    <style>
+        .dafont {
+            text-align: center;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .alan {
+            display: flex;
+            justify-content: center; /* Center the image horizontally */
+            /*padding: 20px; /* Optional padding around the image */
+        }
+
+        .alan img {
+            width: 100%;
+           max-width: 1200px; /* Limit the maximum width of the image */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .navbar {
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .g {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .g1 {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 </head>
-    <body style = background-color:black;>
-        <div style = "color:white;" class = "navbar">
-            <h1> Big Data Analytics..</h1>
-            <div class = "g">
-                <a class = "g1" href = "{{ url_for('find') }}" >Gangs</a>
-                <a class = "g1" href = "{{ url_for('map') }}" >Map</a>
-                <a class = "g1" href = "{{ url_for('tribute') }}" >Tribute</a>
-            </div>
+<body>
+    <div class="navbar">
+        <h1>Big Data Analytics..</h1>
+        <div class="g">
+            <a class="g1" href="{{ url_for('find') }}">Gangs</a>
+            <a class="g1" href="{{ url_for('map') }}">Map</a>
+            <a class="g1" href="{{ url_for('tribute') }}">Tribute</a>
         </div>
-        <div style = "display: flex; justify-content: center;">
-            <img src = "https://i.ytimg.com/vi/gtRLmL70TH0/maxresdefault.jpg">
-        </div>
-       <div class = "dafont">
+    </div>
+    <div class="alan">
+        <img src="https://i.ytimg.com/vi/gtRLmL70TH0/maxresdefault.jpg" alt="Alan Turing">
+    </div>
+    <div class="dafont">
         Alan Turing..
-       </div>
-    </body>
+    </div>
+</body>
 </html>
