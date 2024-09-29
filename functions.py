@@ -156,7 +156,6 @@ def barack():
 
 
 
-gender_cgpa()
 
 
 

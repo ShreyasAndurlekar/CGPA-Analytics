@@ -1,7 +1,7 @@
 body{
 
     font-size:large;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond';
 }
 
 
@@ -26,11 +26,6 @@ body{
     margin: 20px;
 }
 
-.dafont{
-
-    font-family: "Lucida Console", "Courier New", monospace;
-    color: white;
-}
 .g{
 
     margin-right: 50px;
