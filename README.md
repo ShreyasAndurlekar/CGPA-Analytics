@@ -1,6 +1,6 @@
 # Project Overview
 
-This website was made to make use of the CGPA data provided by the college.
+This website was made to make use of the CGPA and LMS ID data provided by the college.
 
 ## Things to Do
 
