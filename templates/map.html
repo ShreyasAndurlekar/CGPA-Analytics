@@ -6,101 +6,8 @@
     <title>Ancestry.com</title>
     <link rel="icon" href="https://i.pinimg.com/originals/52/8e/b3/528eb326e79ca1fc8292910792d6f074.png" type="image/png">
     <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
-    <link rel="stylesheet" href="../static/styles2.css">
-    <style>
-        body {
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .image-container {
-            max-width: 100%;  /* Ensures the container doesn’t exceed the screen width */
-            max-height: 100vh;  /* Ensures the container doesn’t exceed the viewport height */
-            overflow: hidden;
-            position: relative;
-        }
-
-        #zoomable-image {
-            width: 100%;
-            height: auto;  /* Maintains aspect ratio */
-            max-height: 100%;  /* Makes sure the image doesn’t exceed the container’s height */
-            object-fit: contain;  /* Ensures the image is fully visible */
-            transition: transform 0.1s ease-out;
-        }
-
-        .c {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .round-button {
-            width: 20px;
-            height: 20px;
-            background-color:rgb(92, 156, 190);
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            display: flex;
-            flex-direction: column;  /* Arrange items in a column */
-            align-items: center;     /* Center items horizontally */
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            font-family: Verdana, sans-serif;
-        }
-
-        .modal img {
-            max-width: 90%;  /* Limit the width to 90% of the modal */
-            max-height: 80vh;  /* Limit the height to 80% of the viewport height */
-            height: auto;      /* Maintain the aspect ratio */
-            width: auto;       /* Maintain the aspect ratio */
-            border-radius: 8px;
-        }
-
-        .modal h2 {
-            margin-top: 0;
-            font-family: Verdana, sans-serif;
-        }
-        .close-btn {
-            margin-top: 10px;
-            background-color: red;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: medium;
-            font-family: Verdana, sans-serif;
-        }
-
-        @media (max-width: 500px) {
-
-            .round-button{
-
-                width: 5px;
-                height: 5px;
-
-            }
-
-        }
-    </style>
+    <link rel="stylesheet" href="../static/styles/navbar.css">
+    <link rel="stylesheet" href="../static/styles/map.css">
 </head>
 <body style="background-color:#F0E0D6;">
     <div class="navbar">
@@ -108,7 +15,7 @@
         <div class="g">
             <a class="g1" href="{{ url_for('home') }}">Home</a>
             <a class="g1" href="{{ url_for('find') }}">Gangs</a>
-            <a class="g1" href="{{ url_for('find') }}">Tribute</a>
+            <a class="g1" href="{{ url_for('tribute') }}">Tribute</a>
         </div>
     </div>
     <div class="c">

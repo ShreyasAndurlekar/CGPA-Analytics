@@ -4,6 +4,20 @@ from functions import find_students_moved, get_cgpa
 
 app = Flask(__name__)
 
+df_sem3 = pd.read_excel('data/sem3.xlsx', sheet_name=0)
+df_sem4 = pd.read_excel('data/sem4.xlsx', sheet_name=0)
+df_sem4['Name_Set'] = df_sem4['Name'].str.lower().apply(lambda x: set(x.split()))
+df_sem3['Name_Set'] = df_sem3['Name'].str.lower().apply(lambda x: set(x.split()))
+
+df_sorted = pd.read_excel('data/sem4.xlsx')
+df_sorted['Average'] = (df_sorted['S.G.P.A'] + df_sorted['C.G.P.A']) / 2
+df_sorted['Rank'] = df_sorted['C.G.P.A'].rank(ascending=False, method='min')
+df_sorted.loc[df_sorted['C.G.P.A'] == 0, 'Rank'] = 296
+df_sorted = df_sorted.sort_values(by='C.G.P.A', ascending=False)
+df_sorted = df_sorted[['Rank', 'Name', 'C.G.P.A']]
+
+# All data frames loaded here to reduce latency instead of loading everytime the functions are called
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -44,7 +58,7 @@ def handle_cgpa_request():
     if not name:
         return jsonify({"error": "No name provided"}), 400
     
-    result = get_cgpa(name)
+    result = get_cgpa(name, df_sem3, df_sem4, df_sorted)
     return render_template('index.html', result=result)
 
 if __name__ == '__main__':
