@@ -22,7 +22,7 @@ th:first-child {
     text-align: left; /* Add padding between the first and second column */
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
 
     .g{
 
