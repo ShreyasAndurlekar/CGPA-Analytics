@@ -12,9 +12,8 @@
         <div class = "navbar">
             <h1> Big Data Analytics..</h1>
             <div class = "g">
-                <a class = "g1" href = "{{ url_for('find') }}" >Gangs</a>
                 <a class = "g1" href = "{{ url_for('map') }}" >Map</a>
-                <a class = "g1" href = "{{ url_for('tribute') }}" >Tribute</a>
+                <a class = "g1" href = "{{ url_for('find') }}" >Origin</a>
             </div>
             
         </div>
@@ -30,9 +29,11 @@
 
                 </div>
                 {% if result %}
-                    <div id="result">
-                        <pre style = " font-family: 'Times New Roman', Times, serif;">{{ result }}</pre>
+                   <div id="result" style = "margin-top: 15px;" >
+                        <pre id="result-text" style="display: inline; font-family: 'Times New Roman' ">{{ result }}</pre>
+                        <div id="icon" style="display: inline;"></div>
                     </div>
+
                     {% endif %}
                     {% if error %}
                     <div id="error">
@@ -41,15 +42,26 @@
                  {% endif %}
 
                 <p>Please note this is only for the 296 TE CE students in 2024.</p>
+                <p style = "margin-top: -12px;">See next year's <a href="2024.html">statistics.. </a></p>
+
             </div>
+            <script src = "../static/script.js"></script>
+
             
             <div class="box">
                 <h2>Gender Statistics</h2>
                 <p>A girl is more likely to have a higher CGPA</p>
                 <p>Girls have an avg CGPA of 7.87 and boys at 7.17</p>
                 <p>Regardless of gender the average CGPA is 7.34 and a 1/3rd of people have above 8</p>
-                <p>Average ratio of boys and girls for every class is 43:16 ~= 3:1</p>
-            </div>
+                <p>
+                    <span style="font-weight: bold;">A</span> -> 47:13 
+                    <span style="font-weight: bold;">B</span> -> 43:17 
+                    <span style="font-weight: bold;">C</span> -> 42:18 
+                    <span style="font-weight: bold;">D</span> -> 42:18 
+                    <span style="font-weight: bold;">E</span> -> 40:15 
+                    for every 60 rows
+                  </p>
+                              </div>
 
             <div class="box">
                 <h2>2024 Leaderboard</h2>
@@ -61,77 +73,77 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>NIHARIKA RAHUL KAMAT</td>
+                        <td>NIHARIKA RAHUL KAMAT<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.99</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>TALELE ROHIT RAHUL</td>
+                        <td>TALELE ROHIT RAHUL<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.96</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>KORGAONKAR NEERAV JAIDEEP</td>
+                        <td>KORGAONKAR NEERAV JAIDEEP<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.92</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>SUNIDHISHREE PRABAKARAN</td>
+                        <td>SUNIDHISHREE PRABAKARAN<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.89</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>CHAKRABORTY SAIKAT TARUN</td>
+                        <td>CHAKRABORTY SAIKAT TARUN<img src="../static/red.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.88</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>ADITYA ANIL BHABAL</td>
+                        <td>ADITYA ANIL BHABAL<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.88</td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td>BHAMRE ARYA PRAVIN</td>
+                        <td>BHAMRE ARYA PRAVIN<img src="../static/red.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.87</td>
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td>ANKIT CHAUDHARY</td>
+                        <td>ANKIT CHAUDHARY<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.86</td>
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td>MOKSH JAIN</td>
+                        <td>MOKSH JAIN<img src="../static/red.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.84</td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>PATIL MANISH GIRISH</td>
+                        <td>PATIL MANISH GIRISH<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.81</td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>SAANVI GANAPATI NETALKAR</td>
+                        <td>SAANVI GANAPATI NETALKAR<img src="../static/red.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.81</td>
                     </tr>
                     <tr>
                         <td>12</td>
-                        <td>YAHYA MOOSA</td>
+                        <td>YAHYA MOOSA<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.79</td>
                     </tr>
                     <tr>
                         <td>12</td>
-                        <td>ROHIT KUMAR</td>
+                        <td>ROHIT KUMAR<img src="../static/red.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.79</td>
                     </tr>
                     <tr>
                         <td>14</td>
-                        <td>SUPRITHA YOGESH ANCHAN</td>
+                        <td>SUPRITHA YOGESH ANCHAN<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.78</td>
                     </tr>
                     <tr>
                         <td>15</td>
-                        <td>DHANDARPHALE SHARDUL SHRIPAD</td>
+                        <td>DHANDARPHALE SHARDUL SHRIPAD<img src="../static/green.png" alt="icon" style="width: 16px; height: 16px; margin-left: 5px;"></td>
                         <td>9.76</td>
                     </tr>
                     

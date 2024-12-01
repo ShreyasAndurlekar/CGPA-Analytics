@@ -116,7 +116,7 @@ def barack():
     print(top_5_increases[['Name', 'C.G.P.A_sem3', 'C.G.P.A_sem4', 'CGPA_Increase']])
 
 
-
+gender_cgpa()
 
 
 
