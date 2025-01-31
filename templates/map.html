@@ -15,7 +15,6 @@
         <div class="g">
             <a class="g1" href="{{ url_for('home') }}">Home</a>
             <a class="g1" href="{{ url_for('find') }}">Origin</a>
-       
         </div>
     </div>
     <div class="c">
@@ -24,6 +23,8 @@
             <!-- Position the buttons using absolute positioning -->
             <button class="round-button" data-image="{{ url_for('static', filename='photos/solar.jpg') }}" data-title="Terrace" style="top: 68%; left: 14.5%;"></button>
             <button class="round-button" data-image="{{ url_for('static', filename='photos/rainsgalore.jpg') }}" data-title="Peaceful Rains" style="top: 25%; left: 36%;"></button>
+            <button class="round-button" data-pdf="{{ url_for('static', filename='Beware.pdf') }}" data-title="Beware" style="top: 22%; left: 37%;"></button>
+            <button class="round-button" data-image="{{ url_for('static', filename='photos/rainsgalore.jpg') }}" data-title="Chrnonological Order #2" style="top: 27%; left: 37%;"></button>
             <button class="round-button" data-image="{{ url_for('static', filename='photos/udaan.jpg') }}" data-title="Early Dawn of Udaan 2024" style="bottom: 30%; right: 1%;"></button>
             <button class="round-button" data-image="{{ url_for('static', filename='photos/tiredcat.jpg') }}" data-title="Too Many Writups..." style="bottom: 40%; right: 63%;"></button>
             <button class="round-button" data-image="{{ url_for('static', filename='photos/topview.jpg') }}" data-title="The Summer of 2023" style="bottom:70%; left: 10%;"></button>
@@ -45,27 +46,40 @@
         </div>
     </div>
 
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <h2 id="modal-title"></h2>
-            <img id="modal-image" src="" alt="Modal Image">
-            <button class="close-btn" id="close-btn">Close</button>
+    <div class="image-modal" id="image-modal">
+        <div class="image-modal-content">
+            <h2 id="image-modal-title"></h2>
+            <img id="image-modal-image" src="" alt="Modal Image">
+            <button class="image-close-btn" id="image-close-btn">Close</button>
         </div>
     </div>
-    <div style = "margin: 20px; margin-right: auto">
+
+    <div class="pdf-modal" id="pdf-modal">
+        <div class="pdf-modal-content">
+            <h2 id="pdf-modal-title"></h2>
+            <iframe id="pdf-modal-iframe" style="display: none;" frameborder="0"></iframe>
+            <button class="pdf-close-btn" id="pdf-close-btn">Close</button>
+        </div>
+    </div>
+
+    <div style="margin: 20px; margin-right: auto">
         <h2>Ancient Lore</h2>
         <p>
-            AVLA MC ??? 
+            AVLA MC ???
         </p>
     </div>
 
     <script>
         const image = document.getElementById('zoomable-image');
         const container = document.querySelector('.image-container');
-        const modal = document.getElementById('modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalImage = document.getElementById('modal-image');
-        const closeBtn = document.getElementById('close-btn');
+        const imageModal = document.getElementById('image-modal');
+        const pdfModal = document.getElementById('pdf-modal');
+        const imageModalTitle = document.getElementById('image-modal-title');
+        const imageModalImage = document.getElementById('image-modal-image');
+        const pdfModalTitle = document.getElementById('pdf-modal-title');
+        const pdfModalIframe = document.getElementById('pdf-modal-iframe');
+        const imageCloseBtn = document.getElementById('image-close-btn');
+        const pdfCloseBtn = document.getElementById('pdf-close-btn');
         let scale = 1;
         let isZoomed = false;
 
@@ -102,18 +116,31 @@
 
         // Show modal on button click
         document.querySelectorAll('.round-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const imageSrc = button.getAttribute('data-image');
-            const imageTitle = button.getAttribute('data-title');
-            modalImage.src = imageSrc;  // Use the value from data-image directly
-            modalTitle.textContent = imageTitle;
-            modal.style.display = 'flex';
-        });
-    });
+            button.addEventListener('click', () => {
+                const imageSrc = button.getAttribute('data-image');
+                const pdfSrc = button.getAttribute('data-pdf');
+                const title = button.getAttribute('data-title');
 
-        // Close modal
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+                if (imageSrc) {
+                    imageModalTitle.textContent = title;
+                    imageModalImage.src = imageSrc;
+                    imageModal.style.display = 'flex';
+                } else if (pdfSrc) {
+                    pdfModalTitle.textContent = title;
+                    pdfModalIframe.src = pdfSrc;
+                    pdfModalIframe.style.display = 'block';
+                    pdfModal.style.display = 'flex';
+                }
+            });
+        });
+
+        // Close modals
+        imageCloseBtn.addEventListener('click', () => {
+            imageModal.style.display = 'none';
+        });
+
+        pdfCloseBtn.addEventListener('click', () => {
+            pdfModal.style.display = 'none';
         });
     </script>
 </body>

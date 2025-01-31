@@ -1,3 +1,4 @@
+/* Image container and zoomable image styles */
 .image-container {
     max-width: 100%;  /* Ensures the container doesn’t exceed the screen width */
     max-height: 100vh;  /* Ensures the container doesn’t exceed the viewport height */
@@ -20,16 +21,20 @@
     height: 100vh;
     overflow: hidden;
 }
+
+/* Round button styles */
 .round-button {
     width: 20px;
     height: 20px;
-    background-color:rgb(92, 156, 190);
+    background-color: rgb(92, 156, 190);
     border-radius: 50%;
     border: none;
     cursor: pointer;
     position: absolute;
 }
-.modal {
+
+/* Specific styles for image modal */
+.image-modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -41,7 +46,8 @@
     justify-content: center;
     align-items: center;
 }
-.modal-content {
+
+.image-modal-content {
     display: flex;
     flex-direction: column;  /* Arrange items in a column */
     align-items: center;     /* Center items horizontally */
@@ -52,7 +58,7 @@
     font-family: Verdana, sans-serif;
 }
 
-.modal img {
+.image-modal img {
     max-width: 90%;  /* Limit the width to 90% of the modal */
     max-height: 80vh;  /* Limit the height to 80% of the viewport height */
     height: auto;      /* Maintain the aspect ratio */
@@ -60,11 +66,12 @@
     border-radius: 8px;
 }
 
-.modal h2 {
+.image-modal h2 {
     margin-top: 0;
     font-family: Verdana, sans-serif;
 }
-.close-btn {
+
+.image-close-btn {
     margin-top: 10px;
     background-color: red;
     color: white;
@@ -76,13 +83,62 @@
     font-family: Verdana, sans-serif;
 }
 
+/* Specific styles for PDF modal */
+.pdf-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.pdf-modal-content {
+    display: flex;
+    flex-direction: column;  /* Arrange items in a column */
+    align-items: center;     /* Center items horizontally */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: Verdana, sans-serif;
+    width: 80%; /* Default width for mobile */
+    max-width: 1200px; /* Max width for larger screens */
+    height: 90%; /* Height to fit most of the screen */
+}
+
+.pdf-modal iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.pdf-modal h2 {
+    margin-top: 0;
+    font-family: Verdana, sans-serif;
+}
+
+.pdf-close-btn {
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: medium;
+    font-family: Verdana, sans-serif;
+}
+
+/* Adjust round button size for smaller screens */
 @media (max-width: 500px) {
-
-    .round-button{
-
-        width: 5px;
-        height: 5px;
-
+    .round-button {
+        width: 20px;
+        height: 20px;
+        transform: scale(0.4); /* Scales the button to 10px */
     }
-
 }
