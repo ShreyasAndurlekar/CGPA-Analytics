@@ -8,6 +8,24 @@
     <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
     <link rel="stylesheet" href="../static/styles/navbar.css">
     <link rel="stylesheet" href="../static/styles/map.css">
+    <style>
+        /* Add a loading spinner */
+        .loading-spinner {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body style="background-color:#F0E0D6;">
     <div class="navbar">
@@ -19,42 +37,51 @@
     </div>
     <div class="c">
         <div class="image-container">
-            <img id="zoomable-image" src="https://raw.githubusercontent.com/ShreyasAndurlekar/CGPA-Analytics/main/static/RAIT.jpg" alt="Zoomable Image">
-            <!-- Position the buttons using absolute positioning -->
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/solar.jpg') }}" data-title="Terrace" style="top: 68%; left: 14.5%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/rainsgalore.jpg') }}" data-title="Peaceful Rains" style="top: 25%; left: 36%;"></button>
-            <button class="round-button" data-pdf="{{ url_for('static', filename='Beware.pdf') }}" data-title="Beware" style="top: 22%; left: 37%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/rainsgalore.jpg') }}" data-title="Chrnonological Order #2" style="top: 27%; left: 37%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/udaan.jpg') }}" data-title="Early Dawn of Udaan 2024" style="bottom: 30%; right: 1%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/tiredcat.jpg') }}" data-title="Too Many Writups..." style="bottom: 40%; right: 63%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/topview.jpg') }}" data-title="The Summer of 2023" style="bottom:70%; left: 10%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/terrace.jpg') }}" data-title="Navi Mumbai Heights" style="bottom:66%; left: 1%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/resort.jpg') }}" data-title="MBA Pool" style="bottom:56%; left: 6%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/avgday.jpg') }}" data-title="Just Casually Playing Mobile Games in Class" style="bottom:32%; left: 53%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/cat1.jpg') }}" data-title="A Peaceful Night in Nerul" style="bottom:78%; right: 1%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/lab.jpg') }}" data-title="While The World Drowns Away" style="top: 72%; left: 13%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/612a.jpg') }}" data-title="Time To Go Home" style="top: 60%; left: 14.5%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/walkpath.jpg') }}" data-title="Rains #1" style="bottom:96%; left: 6%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/walkpath2.jpg') }}" data-title="Rains #2" style="bottom:96%; left: 4%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/lightrain.jpg') }}" data-title="Rains #3" style="bottom:93%; left: 1%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/lr2.jpg') }}" data-title="Mud" style="bottom:94%; left: 2%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/rat.jpg') }}" data-title="Javed the Juinagar Rat" style="bottom:96%; left: 8%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/disturbing.jpg') }}" data-title="Unsettling Image" style="bottom:90%; left: 0%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/potato.jpg') }}" data-title="Sad Little Piece of Potato" style="bottom:32%; left: 56%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/tired.jpg') }}" data-title="Nap Time" style="bottom:40%; left: 56%;"></button>
-            <button class="round-button" data-image="{{ url_for('static', filename='photos/horizon.jpg') }}" data-title="Dusk of Horizon 2024" style="bottom:78%; right: 20%;"></button>
+            <img id="zoomable-image" src="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/RAIT-ALikXhHeypEJhvLjZhCGZ3gwlfQ6xy.jpg" alt="Zoomable Image">
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/solar-YbrWiYB9VxXAZFvhiU92oY2tzGfP6B.jpg" data-title="Terrace" style="top: 68%; left: 14.5%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/rainsgalore-T8vzeIJtbQYlnJZM3nH7h3cr0FjqYp.jpg" data-title="Peaceful Rains" style="top: 25%; left: 36%;"></button>
+            <button class="round-button" data-pdf="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/Beware-Uir2OAqjMvXsHOYYYw5HRaIRH6B8MK.pdf" data-title="Beware" style="top: 22%; left: 37%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/2-mvm0mZ7S1MR55VkkhusYQbMtEIB6rv.jpg" data-title="Chronological Order #2" style="top: 27%; left: 37%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/udaan-SFGsidquSuvctUtamNhP08AccSJYDe.jpg" data-title="Early Dawn of Udaan 2024" style="bottom: 30%; right: 1%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/tiredcat-TRf31ZTmACVkyu6CxWpCBM8O5RLoL4.jpg" data-title="Too Many Writeups..." style="bottom: 40%; right: 63%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/topview-eIdDoOrdHzKFEZ0XIAIaR3wW7QsTPR.jpg" data-title="The Summer of 2023" style="bottom:70%; left: 10%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/terrace-fwTfrdzb4tF7N3LkxJKiloh644IflU.jpg" data-title="Navi Mumbai Heights" style="bottom:66%; left: 1%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/resort-O0iQGP8U0XVhwzPUL0E9cJ5yTzVhTd.jpg" data-title="MBA Pool" style="bottom:56%; left: 6%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/avgday-BbyR7joY9m7hdKroer2jklnGpKvvsR.jpg" data-title="Just Casually Playing Mobile Games in Class" style="bottom:32%; left: 53%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/cat1-SADJNsi4J4zKKlXkX2Zuu3v4NXPqfc.jpg" data-title="A Peaceful Night in Nerul" style="bottom:78%; right: 1%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/lab-HGF3IpuA74sxmh9prLjQQl7ehsBR6L.jpg" data-title="While The World Drowns Away" style="top: 72%; left: 13%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/612a-z8s5VTOYPS3XcS9ki6qrw6nliRqBQD.jpg" data-title="Time To Go Home" style="top: 60%; left: 14.5%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/walkpath-VCdSFYr8ua9fpmn3miFqgLiAVuRoXT.jpg" data-title="Rains #1" style="bottom:96%; left: 6%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/walkpath2-zIFZ3gim8difiQZIl5DvugKDh5Ymkx.jpg" data-title="Rains #2" style="bottom:96%; left: 4%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/lightrain-STRHuuZeuYFLWt5EqllRkFU0aB6Nue.jpg" data-title="Rains #3" style="bottom:93%; left: 1%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/starry_knight-PQfAr63dt0OJNZlijFRvf8GIUd85HU.jpg" data-title="Dead of the Night" style="bottom:97%; left: 2%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/lr2-cgMNHYe9iRo1tZ61hYgKD0PjoEm9r6.jpg" data-title="Mud" style="bottom:94%; left: 2%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/rat-tWgBFmTkEMGOVzQZi7I4RE6ABLSFC1.jpg" data-title="Javed the Juinagar Rat" style="bottom:96%; left: 8%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/disturbing-IEhmXlk23HKgy0Hu4IquXbULHj5HvS.jpg" data-title="Unsettling Image" style="bottom:90%; left: 0%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/potato-9VLo2Vzaz70jSewVsoeDbaHJRJd1KW.jpg" data-title="Sad Little Piece of Potato" style="bottom:32%; left: 56%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/tired-onIehsNq5lMDcSyPLiDsVHJ8XT9A6f.jpg" data-title="Nap Time" style="bottom:40%; left: 56%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/horizon-qoNRdZqSGvlgVYlAuswo1vv6HC0ec7.jpg" data-title="Dusk of Horizon 2024" style="bottom:78%; right: 20%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/3-eGaT8vSecjtn9J5ZvyqukbjPNd9ZX2.jpg" data-title="Chronological Order #3" style="bottom:85%; right: 88%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/photos/sleepingcat-Vrp0eey5wBB3sCAhbZaW1nEkQ2yQFs.jpg" data-title="curl -X GET 'SLEEP'" style="bottom:48%; right: 70%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/gooner-ZqrKtCjoAPtzGgqR95x0YeEdoka7GU.jpg" data-title="Gooner Markings" style="bottom:33%; right: 72%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/20230227_183859-1AY3mbBu0rFokr8gjro6CPsFlw24N9.jpg" data-title="End of a semester" style="bottom:30%; right: 72%;"></button>
+            <button class="round-button" data-image="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/20221216_113130-Oc04bD2pXBPoYMcaf0ZyfHdBEba3Cd.jpg" data-title="Welcome to DY" style="bottom:30%; right: 74%;"></button>
+            
         </div>
     </div>
 
-    <div class="image-modal" id="image-modal">
+    <!-- Image Modal -->
+    <div class="image-modal" id="image-modal" style="display: none;">
         <div class="image-modal-content">
             <h2 id="image-modal-title"></h2>
-            <img id="image-modal-image" src="" alt="Modal Image">
+            <div class="loading-spinner" id="loading-spinner"></div>
+            <img id="image-modal-image" src="" alt="Zoomed Image" style="display: none;">
             <button class="image-close-btn" id="image-close-btn">Close</button>
         </div>
     </div>
 
-    <div class="pdf-modal" id="pdf-modal">
+    <!-- PDF Modal -->
+    <div class="pdf-modal" id="pdf-modal" style="display: none;">
         <div class="pdf-modal-content">
             <h2 id="pdf-modal-title"></h2>
             <iframe id="pdf-modal-iframe" style="display: none;" frameborder="0"></iframe>
@@ -63,84 +90,125 @@
     </div>
 
     <div style="margin: 20px; margin-right: auto">
-        <h2>Ancient Lore</h2>
-        <p>
-            AVLA MC ???
-        </p>
+        <h2>Ancient Lore </h2>
+        <p>Mysterious AVLA MC markings have been spotted in some classrooms</p> 
+        <p><a href="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/avla1-ogO1vynFUFEaPdSVtMVnqCuSbwCaPl.jpg" target="_blank">View Image 1</a>             and <a href="https://gqigzlhhq52zhk09.public.blob.vercel-storage.com/avla2-eItVwjhhwbO9EtpPi4pVXpltKfI4AL.jpg" target="_blank">View Image 2</a></p>
     </div>
+    
 
     <script>
-        const image = document.getElementById('zoomable-image');
-        const container = document.querySelector('.image-container');
-        const imageModal = document.getElementById('image-modal');
-        const pdfModal = document.getElementById('pdf-modal');
-        const imageModalTitle = document.getElementById('image-modal-title');
-        const imageModalImage = document.getElementById('image-modal-image');
-        const pdfModalTitle = document.getElementById('pdf-modal-title');
-        const pdfModalIframe = document.getElementById('pdf-modal-iframe');
-        const imageCloseBtn = document.getElementById('image-close-btn');
-        const pdfCloseBtn = document.getElementById('pdf-close-btn');
-        let scale = 1;
-        let isZoomed = false;
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("DOM fully loaded and parsed");
 
-        container.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            const delta = e.deltaY * -0.01;
-            scale = Math.min(Math.max(1, scale + delta), 5);
-            updateImageTransform(e);
-        });
+            const imageModal = document.getElementById('image-modal');
+            const imageModalTitle = document.getElementById('image-modal-title');
+            const imageModalImage = document.getElementById('image-modal-image');
+            const imageCloseBtn = document.getElementById('image-close-btn');
+            const loadingSpinner = document.getElementById('loading-spinner');
 
-        container.addEventListener('mousemove', (e) => {
-            if (scale > 1) {
-                updateImageTransform(e);
+            const pdfModal = document.getElementById('pdf-modal');
+            const pdfModalTitle = document.getElementById('pdf-modal-title');
+            const pdfModalIframe = document.getElementById('pdf-modal-iframe');
+            const pdfCloseBtn = document.getElementById('pdf-close-btn');
+
+            // Ensure elements exist before proceeding
+            if (!imageModal || !imageModalTitle || !imageModalImage || !imageCloseBtn || !loadingSpinner) {
+                console.error("Error: Image modal elements are missing from the DOM!");
+                return;
             }
-        });
 
-        function updateImageTransform(e) {
-            const rect = container.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const y = (e.clientY - rect.top) / rect.height;
+            if (!pdfModal || !pdfModalTitle || !pdfModalIframe || !pdfCloseBtn) {
+                console.error("Error: PDF modal elements are missing from the DOM!");
+                return;
+            }
 
-            image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
-            image.style.transform = `scale(${scale})`;
+            // Add event listeners to round buttons
+            document.querySelectorAll('.round-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const imageSrc = button.getAttribute('data-image');
+                    const pdfSrc = button.getAttribute('data-pdf');
+                    const title = button.getAttribute('data-title');
 
-            isZoomed = scale > 1;
-            container.style.cursor = isZoomed ? 'move' : 'default';
+                    if (imageSrc) {
+                        console.log("Opening image modal:", imageSrc);
+                        imageModalTitle.textContent = title;
+                        imageModalImage.style.display = 'none'; // Hide the image initially
+                        loadingSpinner.style.display = 'block'; // Show the loading spinner
 
-            // Show or hide buttons based on zoom level
-            const buttons = document.querySelectorAll('.round-button');
-            buttons.forEach(button => {
-                button.style.display = isZoomed ? 'none' : 'block';
+                        // Clear the previous image source
+                        imageModalImage.src = '';
+
+                        // Load the new image
+                        const img = new Image();
+                        img.src = imageSrc;
+                        img.onload = () => {
+                            imageModalImage.src = imageSrc;
+                            imageModalImage.style.display = 'block'; // Show the image
+                            loadingSpinner.style.display = 'none'; // Hide the loading spinner
+                        };
+
+                        imageModal.style.display = 'flex';
+                    } else if (pdfSrc) {
+                        console.log("Opening PDF modal:", pdfSrc);
+                        pdfModalTitle.textContent = title;
+                        pdfModalIframe.src = pdfSrc;
+                        pdfModalIframe.style.display = 'block';
+                        pdfModal.style.display = 'flex';
+                    }
+                });
             });
-        }
 
-        // Show modal on button click
-        document.querySelectorAll('.round-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const imageSrc = button.getAttribute('data-image');
-                const pdfSrc = button.getAttribute('data-pdf');
-                const title = button.getAttribute('data-title');
+            // Close image modal
+            imageCloseBtn.addEventListener('click', () => {
+                console.log("Closing image modal");
+                imageModal.style.display = 'none';
+                imageModalImage.src = ''; // Clear the image source
+                imageModalImage.style.display = 'none'; // Hide the image
+                loadingSpinner.style.display = 'none'; // Hide the loading spinner
+            });
 
-                if (imageSrc) {
-                    imageModalTitle.textContent = title;
-                    imageModalImage.src = imageSrc;
-                    imageModal.style.display = 'flex';
-                } else if (pdfSrc) {
-                    pdfModalTitle.textContent = title;
-                    pdfModalIframe.src = pdfSrc;
-                    pdfModalIframe.style.display = 'block';
-                    pdfModal.style.display = 'flex';
+            // Close PDF modal
+            pdfCloseBtn.addEventListener('click', () => {
+                console.log("Closing PDF modal");
+                pdfModal.style.display = 'none';
+            });
+
+            // Zoom functionality (unchanged)
+            const image = document.getElementById('zoomable-image');
+            const container = document.querySelector('.image-container');
+            let scale = 1;
+            let isZoomed = false;
+
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY * -0.01;
+                scale = Math.min(Math.max(1, scale + delta), 5);
+                updateImageTransform(e);
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                if (scale > 1) {
+                    updateImageTransform(e);
                 }
             });
-        });
 
-        // Close modals
-        imageCloseBtn.addEventListener('click', () => {
-            imageModal.style.display = 'none';
-        });
+            function updateImageTransform(e) {
+                const rect = container.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
 
-        pdfCloseBtn.addEventListener('click', () => {
-            pdfModal.style.display = 'none';
+                image.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                image.style.transform = `scale(${scale})`;
+
+                isZoomed = scale > 1;
+                container.style.cursor = isZoomed ? 'move' : 'default';
+
+                // Show or hide buttons based on zoom level
+                const buttons = document.querySelectorAll('.round-button');
+                buttons.forEach(button => {
+                    button.style.display = isZoomed ? 'none' : 'block';
+                });
+            }
         });
     </script>
 </body>
