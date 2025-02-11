@@ -59,3 +59,12 @@ h2{
     font-family: 'Bahnschrift', sans-serif;
 }
 
+
+
+input {
+    background-color: black;      /* Set the background color to black */
+    color: white;                 /* Set the text color to white for contrast */
+    font-family: 'JetBrains Mono', monospace; /* Ensure font family is set here as well */
+    padding: 7px;                /* Add some padding for better appearance */
+    border: 2px solid #444;       /* Optional: give a subtle border */
+}

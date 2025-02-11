@@ -1,21 +1,13 @@
-import { Link } from 'react-router-dom';
-import '../styles/navbar.css';
 import '../styles/home.css';
 import greenIcon from '../images/green.png';
 import redIcon from '../images/red.png';
+import Navbar from './Navbar';
 
 const Home = () => {
 
     return (
         <div>
-            <div className="navbar">
-                <h1 style={{ fontWeight: 900, fontFamily: "'Bahnschrift', sans-serif", letterSpacing: 6 }}>2024 CGPA ARCHIVES</h1>
-                <div className="g">
-                    <Link className="g1" to="/map">MAP</Link>
-                    <Link className="g1" to="/origin">ORIGIN</Link>
-                </div>
-            </div>
-
+            <Navbar />
             <div className="grid-container">
                 <div className="box">
                     <h2>Get CGPA Analysis</h2>
@@ -26,11 +18,10 @@ const Home = () => {
                                 type="text"
                                 id="new"
                             />
-                            <button type="submit">Submit</button>
                         </form>
                     </div>
                     <p>Please note this is only for the 296 TE CE students in 2024.</p>
-                    <p style={{ marginTop: '-12px' }}>See last year's here</p>
+                    <p style={{ marginTop: '-12px' }}>Waiting for next year's results...</p>
                 </div>
 
                 <div className="box">

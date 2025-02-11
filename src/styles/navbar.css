@@ -1,35 +1,67 @@
-.navbar{
-
+.navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 20px;
-}
-
-.g {
+  }
+  
+  .g {
+    display: flex;
     font-size: x-large;
     margin-top: 30px;
     color: white;
-}
-
-.g .g1 {
-    color: white; /* Set initial link color to white */
-    
-}
-
-.g .g1:hover {
-    color: white; /* Keep color white on hover */
-}
-
-.g .g1:visited {
-    color: white; /* Keep color white even when visited */
-}
-
-.g .g1:active {
-    color: white; /* Keep color white when clicked */
-}
-
-.g1{
-
+  }
+  
+  .g .g1 {
+    color: white;
     margin-right: 10px;
-   
-}
+    
+  }
+  
+  .g .g1:hover,
+  .g .g1:visited,
+  .g .g1:active {
+    color: white;
+  }
+  
+  /* Hamburger Icon */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .hamburger img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .g {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      height: 100vh;
+      width: 250px;
+      background-color: rgba(0, 0, 0, 0.9);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.3s ease-in-out;
+      margin-top: 0;
+    }
+  
+    .g.open {
+      right: 0;
+    }
+  
+    .g .g1 {
+      margin: 15px 0;
+    }
+  }
+
+  
