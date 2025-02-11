@@ -1,0 +1,35 @@
+.navbar{
+
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.g {
+    font-size: x-large;
+    margin-top: 30px;
+    color: white;
+}
+
+.g .g1 {
+    color: white; /* Set initial link color to white */
+    
+}
+
+.g .g1:hover {
+    color: white; /* Keep color white on hover */
+}
+
+.g .g1:visited {
+    color: white; /* Keep color white even when visited */
+}
+
+.g .g1:active {
+    color: white; /* Keep color white when clicked */
+}
+
+.g1{
+
+    margin-right: 10px;
+   
+}

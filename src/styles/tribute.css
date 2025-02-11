@@ -1,0 +1,38 @@
+.alan {
+    display: flex;
+    justify-content: center;
+}
+
+.alan img{
+    max-width: 80%;
+    height: auto;
+}
+
+body {
+    background-color: black;
+}
+
+.navbar {
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.g {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.g1 {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+p{
+
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-weight: bold;
+}

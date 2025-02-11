@@ -1,0 +1,46 @@
+#container{
+
+    display: flex;
+    justify-content: center;
+
+}
+form {
+    
+    display: flex;
+    flex-direction: column;
+}
+
+form label, form input {
+
+    margin-bottom: 10px;
+    
+}
+
+#btn{
+
+    width:fit-content;
+    margin-left: 30%;
+
+}
+
+.navbar{
+
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.g{
+
+    margin-right: 50px;
+    font-size:x-large;
+    margin-top: 30px;
+}
+
+@media (max-width: 500px) {
+
+    .g{
+
+        margin-right: -10px;
+    }
+}
