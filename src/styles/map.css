@@ -1,7 +1,7 @@
-/* Image container and zoomable image styles */
+/* Existing CSS */
 .image-container {
-    max-width: 100%;  /* Ensures the container doesn’t exceed the screen width */
-    max-height: 100vh;  /* Ensures the container doesn’t exceed the viewport height */
+    max-width: 100%;
+    max-height: 100vh;
     overflow: hidden;
     position: relative;
     cursor: grab;
@@ -13,17 +13,18 @@
 
 #zoomable-image {
     width: 100%;
-    height: auto;  
-    max-height: 100%;  /* Makes sure the image doesn’t exceed the container’s height */
-    object-fit: contain;  /* Ensures the image is fully visible */
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
     transition: transform 0.1s ease-out;
+    border-radius: 1%;
 }
 
 .c {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     overflow: hidden;
 }
 
@@ -38,61 +39,8 @@
     position: absolute;
 }
 
-/* Specific styles for image modal */
-.image-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.image-modal-content {
-    display: flex;
-    flex-direction: column;  /* Arrange items in a column */
-    align-items: center;     /* Center items horizontally */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    font-family: Verdana, sans-serif;
-    margin: 20px;
-}
-
-.image-modal img {
-    max-width: 95%;  /* Limit the width to 90% of the modal */
-    max-height: 80vh;  /* Limit the height to 80% of the viewport height */
-    height: auto;      /* Maintain the aspect ratio */
-    width: auto;       /* Maintain the aspect ratio */
-    border-radius: 8px;
-   
-}
-
-.image-modal h2 {
-    margin-top: 0;
-    font-family: Verdana, sans-serif;
-    color:black;
-}
-
-.image-close-btn {
-    margin-top: 10px;
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: medium;
-    font-family: Verdana, sans-serif;
-}
-
-/* Specific styles for PDF modal */
+/* Modal styles (unchanged) */
+.image-modal,
 .pdf-modal {
     display: none;
     position: fixed;
@@ -106,31 +54,35 @@
     align-items: center;
 }
 
+.image-modal-content,
 .pdf-modal-content {
     display: flex;
-    flex-direction: column;  /* Arrange items in a column */
-    align-items: center;     /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     font-family: Verdana, sans-serif;
-    width: 80%; /* Default width for mobile */
-    max-width: 1200px; /* Max width for larger screens */
-    height: 90%; /* Height to fit most of the screen */
+    margin: 20px;
 }
 
-.pdf-modal iframe {
-    width: 100%;
-    height: 100%;
+.image-modal img {
+    max-width: 95%;
+    max-height: 80vh;
+    height: auto;
+    width: auto;
     border-radius: 8px;
 }
 
+.image-modal h2,
 .pdf-modal h2 {
     margin-top: 0;
     font-family: Verdana, sans-serif;
+    color: black;
 }
 
+.image-close-btn,
 .pdf-close-btn {
     margin-top: 10px;
     background-color: red;
@@ -143,18 +95,21 @@
     font-family: Verdana, sans-serif;
 }
 
-/* Adjust round button size for smaller screens */
-@media (max-width: 500px) {
-    .round-button {
-        width: 20px;
-        height: 20px;
-        transform: scale(0.4); /* Scales the button to 10px */
-    }
+.pdf-modal-content {
+    width: 80%;
+    max-width: 1200px;
+    height: 90%;
 }
 
-/* Add a loading spinner */
+.pdf-modal iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* Loading spinner */
+/* Loading spinner */
 .loading-spinner {
-    display: none;
     border: 4px solid #f3f3f3;
     border-top: 4px solid #3498db;
     border-radius: 50%;
@@ -167,4 +122,20 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Adjust round button size for smaller screens */
+@media (max-width: 500px) {
+    .round-button {
+        width: 20px;
+        height: 20px;
+        transform: scale(0.4);
+    }
+
+    /* Fix the gap issue on mobile */
+    .c {
+        height: auto; /* Allow the container to adjust its height */
+        min-height: 50vh; /* Minimum height to ensure the image is visible */
+        padding: 20px 0; /* Add some padding to separate from navbar and h2 */
+    }
 }
